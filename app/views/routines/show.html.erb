@@ -1,5 +1,4 @@
-<% @routines.each do |routine| %>
-  <%= routine.name %>
+<h1><%= @routines.name %></h1>
   -
-  <%= routine.description %>
-<% end %>
+<p><%= @routines.description %></p>
+<%= link_to "Create New Routine", new_routine_path %>
