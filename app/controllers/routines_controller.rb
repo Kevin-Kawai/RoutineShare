@@ -4,4 +4,8 @@ class RoutinesController < ApplicationController
     @routines = Routine.all
   end
 
+  def show
+    @routines = Routine.find(params[:id])
+  end
+
 end
