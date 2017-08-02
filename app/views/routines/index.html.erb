@@ -1,11 +1,14 @@
 <h1 class="text-center">This is where all the routines will be</h1>
-<div class="row text-center">
 <% @routines.each do |routine| %>
-  <%= link_to routine.name, routine_path(routine) %>
-  -
-  <%= routine.description %>
+  <div class="row text-center">
+    <div class="col-12 col-sm">
+      <h3><%= link_to routine.name, routine_path(routine) %></h3>
+      -
+      <%= routine.description %>
+    </div>
+  </div>
 <% end %>
-</div>
+
 <div>
   <%= link_to "Create New Routine", new_routine_path %>
 </div>
