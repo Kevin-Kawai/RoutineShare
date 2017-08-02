@@ -1,3 +1,13 @@
-<h1>This is the frontpage</h1>
-<%= link_to "View Routines",routines_path %>
-<%= link_to "Create New Routine", new_routine_path %>
+<h1 class="text-center">This is the frontpage</h1>
+<div class="row text-center">
+  <div class="col-12 col-sm">
+    <%= link_to "View Routines",routines_path %>
+  </div>
+  <div class="col-12 col-sm">
+    <%= link_to "Create New Routine", new_routine_path %>
+  </div>
+  <div class="col-12 col-sm">
+    <%= link_to "My Routines", underConstruction_path %>
+  </div>
+</div>
+
