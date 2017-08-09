@@ -1,4 +1,12 @@
 <h1><%= @routines.name %></h1>
   -
 <p><%= @routines.description %></p>
+
+<% @routines.activities.each do |activity| %>
+  <div class="col-10 offset-2">
+    <h1><%= activity.name %></h1>
+    <p><%= activity.description %></p>
+  </div>
+<% end %>
+
 <%= link_to "Create New Routine", new_routine_path %>

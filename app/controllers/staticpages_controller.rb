@@ -4,7 +4,7 @@ class StaticpagesController < ApplicationController
     @routines = Routine.all
   end
 
-  def consturction
+  def construction
   end
 
 end
