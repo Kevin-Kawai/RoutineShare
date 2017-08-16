@@ -12,4 +12,10 @@ FactoryGirl.define do
     description "Best routine ever"
     association :user
   end
+
+  factory :activity do
+    name "Awesome Activity"
+    description "Awesome Activity description"
+    association :routine
+  end
 end

@@ -9,4 +9,10 @@
   </div>
 <% end %>
 
+<div class="col-10 offset-2">
+  <% if @routines.user == current_user %>
+    <%= link_to "Add New Activity", new_routine_activity_path(@routines) %>
+  <% end %>
+</div>
+
 <%= link_to "Create New Routine", new_routine_path %>

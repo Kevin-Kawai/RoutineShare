@@ -1,0 +1,6 @@
+<h1>This is the new activities page</h1>
+<%= simple_form_for @activities, url: routine_activities_path do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.submit "Submit Activity!" %>
+<% end %>
