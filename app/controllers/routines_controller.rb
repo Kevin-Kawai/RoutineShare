@@ -7,6 +7,7 @@ class RoutinesController < ApplicationController
 
   def show
     @routines = Routine.find(params[:id])
+    @new_activities = Activity.new
   end
 
   def new

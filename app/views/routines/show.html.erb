@@ -1,17 +1,26 @@
+<script>
+  $(function () {
+    $('.add_activity_btn').click(function() {
+      $('#activity_column').append('<%= j render partial: "empty_activities", locals: {activity: @new_activities, routine: @routines} %>');
+    });
+  });
+</script>
 <h1><%= @routines.name %></h1>
   -
 <p><%= @routines.description %></p>
 
 <% @routines.activities.each do |activity| %>
-  <div class="col-10 offset-2">
-    <h1><%= activity.name %></h1>
-    <p><%= activity.description %></p>
+  <div class="row" id="activity_column">
+    <div class="col-10 offset-2">
+      <h1><%= activity.name %></h1>
+      <p><%= activity.description %></p>
+    </div>
   </div>
 <% end %>
 
 <div class="col-10 offset-2">
   <% if @routines.user == current_user %>
-    <%= link_to "Add New Activity", new_routine_activity_path(@routines) %>
+    <%= link_to "Add New Activity",'javascript:;',class:"add_activity_btn" %>
   <% end %>
 </div>
 

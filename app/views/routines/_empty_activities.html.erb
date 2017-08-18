@@ -1,0 +1,7 @@
+<div class="col-8 offset-2">
+  <%= simple_form_for activity ,url: routine_activities_path(routine) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.submit "Submit" %>
+  <% end%>
+</div>
