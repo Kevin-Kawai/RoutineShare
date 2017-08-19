@@ -1,7 +1,7 @@
 <script>
   $(function () {
     $('.add_activity_btn').click(function() {
-      $('#activity_column').append('<%= j render partial: "empty_activities", locals: {activity: @new_activities, routine: @routines} %>');
+      $('#activity_column').append('<%= j render partial: "routines/activities/empty_activities", locals: {activity: @new_activities, routine: @routines} %>');
     });
   });
 </script>
@@ -9,14 +9,14 @@
   -
 <p><%= @routines.description %></p>
 
+<div class="row" id="activity_column">
 <% @routines.activities.each do |activity| %>
-  <div class="row" id="activity_column">
     <div class="col-10 offset-2">
       <h1><%= activity.name %></h1>
       <p><%= activity.description %></p>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
 
 <div class="col-10 offset-2">
   <% if @routines.user == current_user %>
