@@ -2,7 +2,14 @@
   $(function () {
     $('#activity_column').sortable({
       update: function( event, ui ) {
-        alert("LessonId: " + ui.item.data('item-id') + " Index: " + ui.item.index());
+
+        $.ajax( {
+          type: 'PUT',
+          url: ui.item.data('update-url'),
+          dataType: 'json',
+          data: { activity: { row_order_position: ui.item.index() } } 
+
+        });
       }
     });
 
@@ -16,7 +23,7 @@
 
 <div class="row" id="activity_column">
 <% @routines.activities.rank(:row_order).each do |activity| %>
-    <div class="col-10 offset-2" data-item-id=<%= activity.id %>>
+  <div class="col-10 offset-2" data-item-id="<%= activity.id %>" data-update-url="<%= routine_activity_path(activity) %>">
       <h1><%= activity.name %></h1>
       <p><%= activity.description %></p>
     </div>
