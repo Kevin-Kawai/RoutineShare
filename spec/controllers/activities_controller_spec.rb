@@ -39,4 +39,15 @@ RSpec.describe ActivitiesController, type: :controller do
       expect(activity.name).to eq("Success")
     end
   end
+
+  describe "activities#update" do
+    it "should update activities in the database" do
+      activity = FactoryGirl.create(:activity)
+      put :update, params: { id: activity.id, routine_id: activity.routine_id, activity: { name: "Changed Activity" } }
+
+      expect(response).to have_http_status(:success)
+      activity.reload
+      expect(activity.name).to eq("Changed Activity")
+    end
+  end
 end

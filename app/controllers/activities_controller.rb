@@ -19,10 +19,15 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  def update
+    @activity = Activity.find(params[:id])
+    @activity.update_attributes(activity_params)
+    render plain: 'Updated!'
+  end
 
   private
 
   def activity_params
-    params.require(:activity).permit(:name,:description)
+    params.require(:activity).permit(:name,:description,:row_order_position)
   end
 end
