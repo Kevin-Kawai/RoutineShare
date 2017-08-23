@@ -15,6 +15,9 @@
 
     $('.add_activity_btn').click(function() {
       $('#activity_column').append('<%= j render partial: "routines/activities/empty_activities", locals: {activity: @new_activities, routine: @routines} %>');
+      $('.new-activity').click(function() {
+        $(this).parent().parent().remove();
+      });
     });
   });
 </script>
@@ -26,6 +29,7 @@
   <div class="col-10 offset-2" data-item-id="<%= activity.id %>" data-update-url="<%= routine_activity_path(activity) %>">
       <h1><%= activity.name %></h1>
       <p><%= activity.description %></p>
+      <i class="fa fa-times" aria-hidden="true"></i>
     </div>
   <% end %>
 </div>
