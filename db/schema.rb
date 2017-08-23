@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170809071554) do
+ActiveRecord::Schema.define(version: 20170823094945) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,9 @@ ActiveRecord::Schema.define(version: 20170809071554) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "row_order"
     t.index ["routine_id"], name: "index_activities_on_routine_id", using: :btree
+    t.index ["row_order"], name: "index_activities_on_row_order", using: :btree
   end
 
   create_table "routines", force: :cascade do |t|
