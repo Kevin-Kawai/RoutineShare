@@ -1,17 +1,18 @@
 <script>
   $(function () {
+    $('#activity_column').sortable({});
+
     $('.add_activity_btn').click(function() {
       $('#activity_column').append('<%= j render partial: "routines/activities/empty_activities", locals: {activity: @new_activities, routine: @routines} %>');
     });
   });
 </script>
 <h1><%= @routines.name %></h1>
-  -
 <p><%= @routines.description %></p>
 
 <div class="row" id="activity_column">
-<% @routines.activities.each do |activity| %>
-    <div class="col-10 offset-2">
+<% @routines.activities.rank(:row_order).each do |activity| %>
+    <div class="activity-block col-10 offset-2">
       <h1><%= activity.name %></h1>
       <p><%= activity.description %></p>
     </div>
