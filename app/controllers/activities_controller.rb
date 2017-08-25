@@ -28,7 +28,7 @@ class ActivitiesController < ApplicationController
   def destroy
     @activity = Activity.find(params[:id])
     @activity.destroy
-    render plain: "Deleted!"
+    redirect_to routine_path(params[:routine_id])
   end
 
   private

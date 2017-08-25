@@ -13,8 +13,9 @@
       }
     });
 
-    $('.add_activity_btn').click(function() {
-      $('#activity_column').append('<%= j render partial: "routines/activities/empty_activities", locals: {activity: @new_activities, routine: @routines} %>');
+    $('.add_activity_btn').click(function(event) {
+      event.preventDefault();
+      $('#activity_column').append('<%= j render partial: "routines/partial/empty_activities", locals: {activity: @new_activities, routine: @routines} %>');
       $('.new-activity').click(function() {
         $(this).parent().parent().remove();
       });
@@ -30,14 +31,16 @@
       <h1><%= activity.name %></h1>
       <p><%= activity.description %></p>
       <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-      <i class="fa fa-trash" aria-hidden="true"></i>
+      <%= link_to routine_activity_path(@routines,id:activity.id), method: "DELETE" do %>
+        <i class="fa fa-trash" aria-hidden="true"></i>
+      <% end %>
     </div>
   <% end %>
 </div>
 
 <div class="col-10 offset-2">
   <% if @routines.user == current_user %>
-    <%= link_to "Add New Activity",'javascript:;',class:"add_activity_btn" %>
+    <%= link_to "Add New Activity",'#',class:"add_activity_btn" %>
   <% end %>
 </div>
 
