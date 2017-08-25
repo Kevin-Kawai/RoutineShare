@@ -23,6 +23,7 @@ class RoutinesController < ApplicationController
     end
   end
 
+
   private
 
   def routine_params
