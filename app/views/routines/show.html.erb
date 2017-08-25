@@ -25,11 +25,12 @@
 <p><%= @routines.description %></p>
 
 <div class="row" id="activity_column">
-<% @routines.activities.rank(:row_order).each do |activity| %>
-  <div class="col-10 offset-2" data-item-id="<%= activity.id %>" data-update-url="<%= routine_activity_path(activity) %>">
+  <% @routines.activities.rank(:row_order).each do |activity| %>
+    <div class="col-10 offset-2" data-item-id="<%= activity.id %>" data-update-url="<%= routine_activity_path(activity) %>">
       <h1><%= activity.name %></h1>
       <p><%= activity.description %></p>
-      <i class="fa fa-times" aria-hidden="true"></i>
+      <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+      <i class="fa fa-trash" aria-hidden="true"></i>
     </div>
   <% end %>
 </div>

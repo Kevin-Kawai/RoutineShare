@@ -25,6 +25,12 @@ class ActivitiesController < ApplicationController
     render plain: 'Updated!'
   end
 
+  def destroy
+    @activity = Activity.find(params[:id])
+    @activity.destroy
+    render plain: "Deleted!"
+  end
+
   private
 
   def activity_params
