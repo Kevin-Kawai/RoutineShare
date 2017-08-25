@@ -22,7 +22,18 @@ class ActivitiesController < ApplicationController
   def update
     @activity = Activity.find(params[:id])
     @activity.update_attributes(activity_params)
-    render plain: 'Updated!'
+    redirect_to routine_path(@activity.routine.id)
+  end
+
+  def destroy
+    @activity = Activity.find(params[:id])
+    @activity.destroy
+    redirect_to routine_path(params[:routine_id])
+  end
+
+  def edit
+    @activity = Activity.find(params[:id])
+    render partial: "/routines/partial/edit_activities", locals: {activity: @activity}
   end
 
   private

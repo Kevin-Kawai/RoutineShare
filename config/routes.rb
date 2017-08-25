@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   root "staticpages#index"
   get 'underConstruction', to: 'staticpages#construction'
   resources :routines, only: [:index,:show,:new,:create] do
-    resources :activities, only: [:new,:create,:update]
+    resources :activities
   end
 end

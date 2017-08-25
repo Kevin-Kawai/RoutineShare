@@ -50,4 +50,15 @@ RSpec.describe ActivitiesController, type: :controller do
       expect(activity.name).to eq("Changed Activity")
     end
   end
+
+  describe "activities#destroy" do
+    it "should allow a user who owns the routine to delete a activity" do 
+      routine = FactoryGirl.create(:routine)
+      activity = FactoryGirl.create(:activity, routine_id: routine.id)
+      sign_in activity.routine.user
+
+      delete :destroy, params: {routine_id: activity.routine.id,id: activity.id}
+      expect(routine.activities.length).to eq(0)
+    end
+  end
 end
