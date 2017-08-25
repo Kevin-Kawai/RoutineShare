@@ -20,6 +20,15 @@
         $(this).parent().parent().remove();
       });
     });
+    $('.edit_activity_btn').click(function(event) {
+      event.preventDefault();
+      var edit_column = $(this).parent();
+      var edit_url = $(this).parent().data('edit-url');
+      $.get(edit_url,function(data) {
+        edit_column.html(data);
+        console.log(data);
+      });
+    });
   });
 </script>
 <h1><%= @routines.name %></h1>
@@ -27,10 +36,12 @@
 
 <div class="row" id="activity_column">
   <% @routines.activities.rank(:row_order).each do |activity| %>
-    <div class="col-10 offset-2" data-item-id="<%= activity.id %>" data-update-url="<%= routine_activity_path(activity) %>">
+    <div class="col-10 offset-2" data-item-id="<%= activity.id %>" data-edit-url = "<%= edit_routine_activity_path(routine_id:@routines.id,id:activity.id) %>" data-update-url="<%= routine_activity_path(activity) %>">
       <h1><%= activity.name %></h1>
       <p><%= activity.description %></p>
-      <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+      <%= link_to '#',class: "edit_activity_btn" do %>
+        <i class="fa fa-pencil-square-o" aria-hidden="true" ></i>
+      <% end %>
       <%= link_to routine_activity_path(@routines,id:activity.id), method: "DELETE" do %>
         <i class="fa fa-trash" aria-hidden="true"></i>
       <% end %>

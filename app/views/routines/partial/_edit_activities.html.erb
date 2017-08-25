@@ -1,0 +1,5 @@
+<%= simple_form_for activity, url: routine_activity_path(routine_id:activity.routine.id,id:activity.id), method: :put do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.submit "Submit" %>
+<% end %>
