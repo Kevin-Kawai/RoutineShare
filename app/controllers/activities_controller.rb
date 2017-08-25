@@ -31,6 +31,11 @@ class ActivitiesController < ApplicationController
     redirect_to routine_path(params[:routine_id])
   end
 
+  def edit
+    activity = Activity.find(params[:id])
+    render json: activity
+  end
+
   private
 
   def activity_params
